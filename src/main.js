@@ -1,5 +1,3 @@
-import './styles/reset.css';
-import './styles/navbar.css';
-import './styles/index.css';
+import './styles/index.scss';
 
 console.log('HELLO WORLD!!!');

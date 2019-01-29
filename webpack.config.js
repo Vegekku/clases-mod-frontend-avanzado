@@ -4,8 +4,11 @@ const htmlPlugin = require('html-webpack-plugin'); // empaquetador de HTML
 const srcDir = 'src';
 
 module.exports = {
+    // devtool: 'eval',
+    // debug: true,
+    // devtool: 'source-map',
     mode: 'development',
-    entry: path.join(__dirname, srcDir, 'main.js'), // src/js/main.js
+    entry: path.join(__dirname, srcDir, 'main.js'), // src/main.js
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist'),
@@ -13,10 +16,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: [ // se usan de derecha a izquierda, o de abajo a arriba
                     'style-loader', // procesar el import
-                    'css-loader' // entender el import
+                    'css-loader', // entender el import
+                    'sass-loader',
                 ]
             }
         ],

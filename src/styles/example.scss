@@ -1,0 +1,149 @@
+$font-color: blue;
+$main-font-size: 1rem;
+$header-1: $main-font-size + .8rem;
+
+body {
+  color: $font-color;
+  font-size: $main-font-size;
+}
+
+h1 {
+  font-size: $header-1;
+}
+
+/* anidamiento  */
+
+nav {
+  padding: 20px;
+  ul {
+    margin: 0 auto;
+    // A partir de 2, ya es demasiado pesado
+    li {
+      top: 0;
+      span {
+        color: red;
+      }
+    }
+  }
+  &.open-search {
+    display: none;
+  }
+  &:hover {
+    opacity: .9;
+  }
+  body & {
+    padding: 48px;
+  }
+}
+
+@mixin prefixFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin bordeConParametro($border: 12px) {
+  border: $border solid;
+  -moz-border-radius: $border solid;
+}
+
+$tablet-width: 768px;
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+.d-flex {
+  @include prefixFlex;
+  @include bordeConParametro();
+  @include tablet {
+    display: none;
+  };
+}
+
+// operaciones
+article {
+  width: 600px/200px * 100%;
+}
+
+$main-color: #FFAAEE;
+
+// uso de funciones propias de SASS/SCSS
+.button {
+  background-color: $main-color;
+  &:hover {
+    background-color: darken($main-color, .2);
+  }
+}
+
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content; 
+  }
+}
+
+.sidebar {
+  width: 60px;
+  //@media screen and (orientation: landscape) {
+  //  width: 500px;
+  //}
+  @media screen {
+    padding: 200px;
+    @include landscape {
+      width: 500px;
+    }
+  }
+}
+
+.button {
+  padding: 20px;
+  color: black;
+  background-color: white;
+}
+
+.error {
+  @extend .button;
+  background-color: red;
+  color: white;
+}
+
+$production: true;
+.debug {
+  @if $production {
+    display: none;
+  }
+  padding: 20px;
+}
+
+@for $i from 1 through 3 {
+  .item-#{$i} {
+    border: #{$i * 2}px solid;
+  }
+}
+
+$widthArray: [25, 50, 75, 100];
+@each $width in $widthArray {
+//@each $width in 25, 50, 75, 100 {
+  .width-#{$width} {
+    width: #{$width * 1%};
+  }
+}
+
+$iterator: 6;
+@while $iterator > 0 {
+  .item#{$iterator} {
+    padding: 20px;
+  }
+  $iterator: $iterator - 1;
+}
+
+@function double($value: 1) {
+  @return $value * 2;
+}
+
+.button {
+  padding: double();
+  margin: double(30px);
+}
