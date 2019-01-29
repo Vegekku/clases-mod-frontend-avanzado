@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "http-server-dist": "http-server dist",
     "webpack": "./node_modules/.bin/webpack",
-    "webpack-dev": "./node_modules/.bin/webpack -w"
+    "webpack:dev": "./node_modules/.bin/webpack -w"
   },
   "author": "",
   "license": "ISC"
