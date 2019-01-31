@@ -18,9 +18,19 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ // se usan de derecha a izquierda, o de abajo a arriba
-                    'style-loader', // procesar el import
-                    'css-loader', // entender el import
-                    'sass-loader',
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
                 ]
             }
         ],
