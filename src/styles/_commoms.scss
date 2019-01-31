@@ -1,0 +1,12 @@
+.button {
+    background-color: $primary-color-text;
+    border-radius: 2px;
+    border: 1px solid $primary-color-dark;
+    padding: 5px 10px;
+    color: $primary-color-dark;
+    font-size: $primary-font-size;
+    cursor: pointer;
+    &:hover {
+        background-color: darken($primary-color-text, 20%);
+    }
+}
