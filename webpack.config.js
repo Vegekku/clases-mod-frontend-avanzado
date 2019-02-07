@@ -5,6 +5,8 @@ const htmlPlugin = require('html-webpack-plugin'); // empaquetador de HTML
 const srcDir = 'src';
 
 module.exports = {
+    // Buena práctica: tener un webpack.common con configuración comun a prod y dev
+    // ...common,
     // devtool: 'eval',
     // debug: true,
     devtool: 'source-map',
@@ -39,6 +41,16 @@ module.exports = {
                 use: 'babel-loader',
                 exclude: /node_modules/,
             },
+            {
+                // test: /assets\/.*/,
+                test: /\.(jpg|png|jpeg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    }
+                ]
+            }
         ],
     },
     plugins: [

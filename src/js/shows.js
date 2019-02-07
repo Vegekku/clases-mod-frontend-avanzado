@@ -2,10 +2,11 @@ import striptags from 'striptags';
 // import escapeHtml from 'escape-html';
 import { openHeader } from './ui';
 import api from './api'; //esto es posible gracias a 'export default'
+import defaultImg from './../images/default.jpg';
 
 // de esta forma, no habría que modificar todas las ocurrencias anteriores de getShows() a api().getShows()
 // estamos usando deestructuring
-const { getShows } = api(); 
+const { getShows } = api();
 
 // Para probar getShows, descomentar
 // getShows()
@@ -19,7 +20,7 @@ const templateShow = ({ id, name, image, summary, principal }) => `
       </header>
       <div class="card-content">
         <div class="card-content-image">
-          <img src="${image.medium}">
+          <img src="${image ? image.medium : defaultImg}">
         </div>
         <div class="card-content-text">
           <p>${striptags(summary)}</p>
