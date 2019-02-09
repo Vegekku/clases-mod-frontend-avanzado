@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlPlugin = require('html-webpack-plugin'); // empaquetador de HTML
+const cleanWebpackPlugin = require('clean-webpack-plugin');
 
 const srcDir = 'src';
 
@@ -11,9 +12,12 @@ module.exports = {
     // debug: true,
     devtool: 'source-map',
     mode: 'development',
-    entry: path.join(__dirname, srcDir, 'main.js'), // src/main.js
+    entry: {
+        app: path.join(__dirname, srcDir, 'main.js'),
+        detail: path.join(__dirname, srcDir, 'detail.js'),
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.join(__dirname, 'dist'),
     },
     module: {
@@ -54,8 +58,15 @@ module.exports = {
         ],
     },
     plugins: [
+        new cleanWebpackPlugin(['dist']),
         new htmlPlugin({
             template: path.join(__dirname, srcDir, 'index.html'),
+            chunks: ['app'],
+        }),
+        new htmlPlugin({
+            filename: 'detail.html',
+            template: path.join(__dirname, srcDir, 'detail.html'),
+            chunks: ['detail']
         }),
         new webpack.HotModuleReplacementPlugin(), //para recargar en caliente
     ],

@@ -16,11 +16,11 @@ const { getShows } = api();
 const templateShow = ({ id, name, image, summary, principal }) => `
     <div id="${id}" class="card ${principal ? 'principal' : 'secondary close'}">
       <header class="card-header">
-        <h2>${name}</h2>
+        <h2><a href="./detail.html?id=${id}">${name}</a></h2>
       </header>
       <div class="card-content">
         <div class="card-content-image">
-          <img src="${image ? image.medium : defaultImg}">
+          <a href="./detail.html?id=${id}"><img src="${image ? image.medium : defaultImg}"></a>
         </div>
         <div class="card-content-text">
           <p>${striptags(summary)}</p>

@@ -1,8 +1,26 @@
+const API_KEY = 'Your-api-key';
 const api = (API_URL = 'http://api.tvmaze.com/') => {
     const SEARCH_API_URL = `${API_URL}search/shows?q=`;
     const SHOWS_URL = `${API_URL}shows`;
 
     return {
+        createQuote: async (id, text) => {
+            try {
+                const response = await fetch(`${API_URL}/quote/${id}`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        quote: text,
+                    }),
+                    headers: {
+                        'X-API-KEY': API_KEY,
+                    },
+                });
+                const quote = await response.json();
+                return quote;
+            } catch (e) {
+                throw e;
+            }
+        },
         getShows: async (query) => {
             try {
                 const requestUrl = query ? 
@@ -26,6 +44,16 @@ const api = (API_URL = 'http://api.tvmaze.com/') => {
                 throw error;
             } 
         },
+        getShowDetail: async (id) => {
+            try {
+                const response = await fetch(`${SHOWS_URL}/${id}`);
+                const show = await response.json();
+                return show;
+            } catch (e) {
+                throw e;
+            }
+            
+        }
     };
 };
 

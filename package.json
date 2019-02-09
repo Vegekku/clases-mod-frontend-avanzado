@@ -33,7 +33,7 @@
     "webpack": "./node_modules/.bin/webpack",
     "webpack:dev": "./node_modules/.bin/webpack --watch",
     "start": "./node_modules/.bin/webpack-dev-server",
-    "prod": "./node_modules/.bin/webpack --config webpack.production.js"
+    "prod": "./node_modules/.bin/webpack --config webpack.production.js -p"
   },
   "author": "",
   "license": "ISC"
