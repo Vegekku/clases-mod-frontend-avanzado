@@ -73,7 +73,7 @@ module.exports = {
     devServer: { // https://webpack.js.org/configuration/dev-server/
         open: true, // Tells dev-server to open the browser after server had been started
         overlay: true, // Shows a full-screen overlay in the browser when there are compiler errors or warnings
-        port: 3000, // Specify a port number to listen for requests on
+        port: 3001, // Specify a port number to listen for requests on
         hot: true, // Enable webpack's Hot Module Replacement feature (webpack.HotModuleReplacementPlugin is required)
         contentBase: [ // Tell the server where to serve content from
             path.join(__dirname, 'src'),
